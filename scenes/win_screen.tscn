@@ -9,6 +9,16 @@ font_size = 48
 outline_size = 13
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_2l6cc"]
+font = ExtResource("1_wv5lq")
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_e41g7"]
+font = ExtResource("1_wv5lq")
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
 [node name="WinScreen" type="Control" unique_id=528751209]
 layout_mode = 3
 anchors_preset = 15
@@ -37,9 +47,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -114.0
-offset_top = -82.0
+offset_top = -121.0
 offset_right = 114.0
-offset_bottom = -10.0
+offset_bottom = -49.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "You Win"
@@ -47,7 +57,49 @@ label_settings = SubResource("LabelSettings_erk2x")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="." unique_id=341256214]
+[node name="Stats" type="Control" parent="." unique_id=2136865770]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TotalTime" type="Label" parent="Stats" unique_id=1936815001]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -29.0
+offset_right = 68.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Time: 00:00:00"
+label_settings = SubResource("LabelSettings_2l6cc")
+
+[node name="Deaths" type="Label" parent="Stats" unique_id=619992902]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = -5.0
+offset_right = 52.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Deaths: 00"
+label_settings = SubResource("LabelSettings_e41g7")
+
+[node name="OkBtn" type="Button" parent="." unique_id=341256214]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -55,12 +107,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -75.0
-offset_top = 17.0
+offset_top = 66.0
 offset_right = 74.0
-offset_bottom = 50.5
+offset_bottom = 99.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_wv5lq")
 text = "OK..."
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="OkBtn" to="." method="_on_button_pressed"]

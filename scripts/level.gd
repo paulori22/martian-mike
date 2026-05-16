@@ -31,7 +31,7 @@ func _ready() -> void:
 	death_zone.body_entered.connect(_on_death_zone_body_entered)
 	
 	time_left = level_time
-	hud.set_time_label(time_left)
+	update_hud_data()
 
 	var timer_node: Timer = Timer.new()
 	timer_node.name = "Level Timer"
@@ -43,10 +43,10 @@ func _ready() -> void:
 func _on_level_timer_timeout():
 	if !win:
 		time_left -= 1
-		hud.set_time_label(time_left)
+		PlayerData.increase_played_time(1)
+		update_hud_data()
 		if time_left < 0:
-			AudioPlayer.play_sfx(GlobalAudioPlayer.SfxType.HURT)
-			reset_player()
+			player_died()
 			time_left = level_time
 			hud.set_time_label(time_left)
 
@@ -55,6 +55,7 @@ func _process(delta: float) -> void:
 		get_tree().quit()
 	if Input.is_action_just_pressed("reset"):
 		get_tree().reload_current_scene()
+	print(PlayerData.get_played_time())
 
 func _physics_process(delta: float) -> void:
 	update_death_zone_position_based_on_player()
@@ -63,12 +64,10 @@ func update_death_zone_position_based_on_player():
 	death_zone.global_position.x = player.global_position.x
 
 func _on_death_zone_body_entered(body: Node2D) -> void:
-	AudioPlayer.play_sfx(GlobalAudioPlayer.SfxType.HURT)
-	reset_player()
+	player_died()
 
 func _on_trap_touched_player() -> void:
-	AudioPlayer.play_sfx(GlobalAudioPlayer.SfxType.HURT)
-	reset_player()
+	player_died()
 
 func reset_player():
 	player.velocity = Vector2.ZERO
@@ -85,3 +84,14 @@ func _on_exit_body_entered(body):
 				ui_layer.show_win_screen()
 			else:
 				get_tree().change_scene_to_packed(next_level)
+
+func player_died():
+	AudioPlayer.play_sfx(GlobalAudioPlayer.SfxType.HURT)
+	PlayerData.register_death()
+	hud.set_deaths_label(PlayerData.get_deaths())
+	reset_player()
+
+func update_hud_data():
+	hud.set_time_label(time_left)
+	hud.set_total_time_label(PlayerData.get_played_time())
+	hud.set_deaths_label(PlayerData.get_deaths())
