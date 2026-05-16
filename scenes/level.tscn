@@ -1,0 +1,41 @@
+[gd_scene format=4 uid="uid://b7l8l35lewdig"]
+
+[ext_resource type="Script" uid="uid://b6hntm6m1kkey" path="res://scripts/level.gd" id="1_2q6dc"]
+[ext_resource type="PackedScene" uid="uid://d0liywmywp6ur" path="res://scenes/bg.tscn" id="2_klq6b"]
+[ext_resource type="PackedScene" uid="uid://dqcidrv8gx6lu" path="res://scenes/level_2.tscn" id="2_t1rx8"]
+[ext_resource type="PackedScene" uid="uid://c5hg7lddiimbq" path="res://scenes/player.tscn" id="2_w7c3h"]
+[ext_resource type="PackedScene" uid="uid://bi4oav7fev7if" path="res://scenes/tile_map.tscn" id="3_2r41h"]
+[ext_resource type="PackedScene" uid="uid://ckwncc7mrxo7w" path="res://scenes/ui_layer.tscn" id="4_8iemx"]
+[ext_resource type="PackedScene" uid="uid://ca600mc1tb7ft" path="res://scenes/death_zone.tscn" id="6_8iemx"]
+[ext_resource type="PackedScene" uid="uid://c4whvwpsbxky6" path="res://scenes/start.tscn" id="9_8c41q"]
+[ext_resource type="PackedScene" uid="uid://cf0o4vaclcb5e" path="res://scenes/exit.tscn" id="10_olg7q"]
+
+[node name="Level" type="Node2D" unique_id=185514726]
+script = ExtResource("1_2q6dc")
+next_level = ExtResource("2_t1rx8")
+level_time = 20
+
+[node name="BG" parent="." unique_id=853687766 instance=ExtResource("2_klq6b")]
+
+[node name="UILayer" parent="." unique_id=1894705469 instance=ExtResource("4_8iemx")]
+
+[node name="TileMap" parent="." unique_id=1473268183 instance=ExtResource("3_2r41h")]
+position = Vector2(217, 257)
+tile_map_data = PackedByteArray("AADz/wAAAAAGAAIAAADz////AAAGAAEAAAD0////AAAHAAEAAAD0//7/AAAHAAAAAAD1//7/AAAHAAAAAAD2//7/AAAHAAAAAADz//7/AAAGAAAAAAD1////AAAHAAEAAAD2////AAAHAAEAAAD3////AAAHAAEAAAD9/wAAAAAIAAIAAAD9////AAAIAAEAAAD9//7/AAAIAAAAAAD8/wAAAAAHAAIAAAD8////AAAHAAEAAAD8//7/AAAHAAAAAAD7/wAAAAAHAAIAAAD7////AAAHAAEAAAD7//7/AAAHAAAAAAD6/wAAAAAHAAIAAAD6////AAAHAAEAAAD6//7/AAAHAAAAAAD5/wAAAAAHAAIAAAD5////AAAHAAEAAAD5//7/AAAHAAAAAAD4/wAAAAAHAAIAAAD4////AAAHAAEAAAD4//7/AAAHAAAAAAD3/wAAAAAHAAIAAAD3//7/AAAHAAAAAAD2/wAAAAAHAAIAAAD1/wAAAAAHAAIAAAD0/wAAAAAHAAIAAAADAAAAAAAIAAIAAAADAP//AAAIAAEAAAADAP7/AAAIAAAAAAACAAAAAAAHAAIAAAACAP//AAAHAAEAAAACAP7/AAAHAAAAAAABAAAAAAAHAAIAAAABAP//AAAHAAEAAAABAP7/AAAHAAAAAAAAAAAAAAAHAAIAAAAAAP//AAAHAAEAAAAAAP7/AAAHAAAAAAD//wAAAAAGAAIAAAD/////AAAGAAEAAAD///7/AAAGAAAAAAAKAAAAAAAIAAIAAAAKAP//AAAIAAEAAAAKAP7/AAAIAAAAAAAJAAAAAAAHAAIAAAAJAP//AAAHAAEAAAAJAP7/AAAHAAAAAAAIAAAAAAAHAAIAAAAIAP//AAAHAAEAAAAIAP7/AAAHAAAAAAAHAAAAAAAHAAIAAAAHAP//AAAHAAEAAAAHAP7/AAAHAAAAAAAGAAAAAAAGAAIAAAAGAP//AAAGAAEAAAAGAP7/AAAGAAAAAAAVAAAAAAAIAAIAAAAVAP//AAAIAAEAAAAVAP7/AAAIAAAAAAAUAAAAAAAHAAIAAAAUAP//AAAHAAEAAAAUAP7/AAAHAAAAAAATAAAAAAAHAAIAAAATAP//AAAHAAEAAAATAP7/AAAHAAAAAAASAAAAAAAHAAIAAAASAP//AAAHAAEAAAASAP7/AAAHAAAAAAARAAAAAAAHAAIAAAARAP//AAAHAAEAAAARAP7/AAAHAAAAAAAQAAAAAAAHAAIAAAAQAP//AAAHAAEAAAAQAP7/AAAHAAAAAAAPAAAAAAAHAAIAAAAPAP//AAAHAAEAAAAPAP7/AAAHAAAAAAAOAAAAAAAGAAIAAAAOAP//AAAGAAEAAAAOAP7/AAAGAAAAAAA=")
+
+[node name="DeathZone" parent="." unique_id=994663391 instance=ExtResource("6_8iemx")]
+
+[node name="Traps" type="Node2D" parent="." unique_id=617081531]
+
+[node name="Objects" type="Node2D" parent="." unique_id=667713130]
+
+[node name="Start" parent="." unique_id=159819309 instance=ExtResource("9_8c41q")]
+position = Vector2(44, 225)
+
+[node name="Exit" parent="." unique_id=633579696 instance=ExtResource("10_olg7q")]
+position = Vector2(541, 226)
+
+[node name="Player" parent="." unique_id=2102332117 instance=ExtResource("2_w7c3h")]
+position = Vector2(114, 218)
+
+[connection signal="body_entered" from="DeathZone" to="." method="_on_death_zone_body_entered"]

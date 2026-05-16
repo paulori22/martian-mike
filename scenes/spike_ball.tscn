@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://4otdebl7vy6w"]
+
+[ext_resource type="Script" uid="uid://deno1cx3t8vdw" path="res://scripts/trap.gd" id="1_x1r4e"]
+[ext_resource type="Texture2D" uid="uid://b1q4q05rapdbt" path="res://assets/textures/other/Spiked Ball.png" id="2_x1r4e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kprxg"]
+radius = 12.0
+
+[sub_resource type="Animation" id="Animation_x1r4e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jynpk"]
+resource_name = "move"
+length = 2.0
+loop_mode = 1
+step = 0.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(100, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ww4y1"]
+resource_name = "move_vertical"
+length = 2.0
+loop_mode = 1
+step = 0.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -100)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ww4y1"]
+_data = {
+&"RESET": SubResource("Animation_x1r4e"),
+&"move": SubResource("Animation_jynpk"),
+&"move_vertical": SubResource("Animation_ww4y1")
+}
+
+[node name="SpikeBall" type="Node2D" unique_id=1883516978 groups=["traps"]]
+script = ExtResource("1_x1r4e")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=99463710]
+collision_layer = 8
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=622453648]
+texture = ExtResource("2_x1r4e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1826928553]
+visibility_layer = 2
+shape = SubResource("CircleShape2D_kprxg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=407303711]
+libraries/ = SubResource("AnimationLibrary_ww4y1")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
