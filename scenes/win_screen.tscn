@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c0vfhqw2w66i0" path="res://scripts/win_screen.gd" id="1_erk2x"]
 [ext_resource type="FontFile" uid="uid://dd7kavxf0o8y7" path="res://assets/fonts/Kenney Pixel Square.ttf" id="1_wv5lq"]
+[ext_resource type="Theme" uid="uid://dylov7pxx5nks" path="res://base_theme.tres" id="3_2l6cc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_erk2x"]
 font = ExtResource("1_wv5lq")
@@ -47,9 +48,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -114.0
-offset_top = -121.0
+offset_top = -140.0
 offset_right = 114.0
-offset_bottom = -49.0
+offset_bottom = -68.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "You Win"
@@ -64,6 +65,8 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_top = -32.0
+offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -99,6 +102,84 @@ grow_vertical = 2
 text = "Deaths: 00"
 label_settings = SubResource("LabelSettings_e41g7")
 
+[node name="LeaderboardSubmit" type="Control" parent="." unique_id=341973666]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerNameField" type="LineEdit" parent="LeaderboardSubmit" unique_id=298505079]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -131.0
+offset_right = 8.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_2l6cc")
+placeholder_text = "Name"
+alignment = 1
+max_length = 100
+
+[node name="SubmitLeaderboardBtn" type="Button" parent="LeaderboardSubmit" unique_id=873769657]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 23.0
+offset_right = 103.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_2l6cc")
+text = "Submit"
+
+[node name="ResponseMessage" type="Label" parent="LeaderboardSubmit" unique_id=1354496607]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.0
+offset_top = 40.0
+offset_right = 87.0
+offset_bottom = 63.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_2l6cc")
+theme_override_font_sizes/font_size = 8
+text = "✅ Synced with server"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Leaderboard" type="Button" parent="." unique_id=1527481739]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.0
+offset_top = 73.0
+offset_right = -1.0
+offset_bottom = 105.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_2l6cc")
+text = "Leaderboard"
+
 [node name="OkBtn" type="Button" parent="." unique_id=341256214]
 layout_mode = 1
 anchors_preset = 8
@@ -106,13 +187,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = 66.0
-offset_right = 74.0
-offset_bottom = 99.5
+offset_left = 23.0
+offset_top = 73.0
+offset_right = 172.0
+offset_bottom = 106.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_wv5lq")
-text = "OK..."
+text = "Main menu"
 
+[connection signal="pressed" from="LeaderboardSubmit/SubmitLeaderboardBtn" to="." method="_on_submit_leaderboard_pressed"]
+[connection signal="pressed" from="Leaderboard" to="." method="_on_leaderboard_pressed"]
 [connection signal="pressed" from="OkBtn" to="." method="_on_button_pressed"]

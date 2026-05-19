@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 AudioPlayer="*uid://ramvdxy3e3gx"
 PlayerData="*uid://dbfioxyqtpqs0"
+ApiManager="*uid://cak0i5i4famyb"
 
 [display]
 

@@ -55,7 +55,6 @@ func _process(delta: float) -> void:
 		get_tree().quit()
 	if Input.is_action_just_pressed("reset"):
 		get_tree().reload_current_scene()
-	print(PlayerData.get_played_time())
 
 func _physics_process(delta: float) -> void:
 	update_death_zone_position_based_on_player()

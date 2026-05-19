@@ -48,3 +48,6 @@ $RECYCLE.BIN/
 # —— IDE (uncomment to ignore; many teams keep shared .vscode) ——
 # .idea/
 # .vscode/launch.json
+
+# —— Environment secrets ——
+.env

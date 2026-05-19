@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://dylov7pxx5nks"]
+
+[ext_resource type="FontFile" uid="uid://dd7kavxf0o8y7" path="res://assets/fonts/Kenney Pixel Square.ttf" id="1_6qegq"]
+
+[resource]
+default_font = ExtResource("1_6qegq")
+default_font_size = 16

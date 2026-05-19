@@ -13,3 +13,6 @@ func start():
 
 func quit():
 	get_tree().quit()
+
+func _on_leaderboard_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/leaderboard.tscn")

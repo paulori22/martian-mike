@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://dlesamdxy73kx"]
+
+[ext_resource type="Script" uid="uid://b0iiciqt5uj36" path="res://scripts/leaderboard.gd" id="1_wgq7h"]
+[ext_resource type="Theme" uid="uid://dylov7pxx5nks" path="res://base_theme.tres" id="2_wgq7h"]
+
+[node name="Leaderboard" type="Control" unique_id=776752408]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wgq7h")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1465485510]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=2125596788]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=697092674]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="PanelContainer/VBoxContainer" unique_id=778470082]
+layout_mode = 2
+theme = ExtResource("2_wgq7h")
+theme_override_font_sizes/font_size = 24
+text = "LEADERBOARD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer" unique_id=394583189]
+clip_contents = false
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+
+[node name="LeaderboardGrid" type="GridContainer" parent="PanelContainer/VBoxContainer/ScrollContainer" unique_id=1716396652]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+columns = 5
+
+[node name="RankHeader" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/LeaderboardGrid" unique_id=386770993]
+layout_mode = 2
+theme = ExtResource("2_wgq7h")
+theme_override_font_sizes/font_size = 16
+text = "Rank"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerNameHeader" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/LeaderboardGrid" unique_id=33525839]
+layout_mode = 2
+theme = ExtResource("2_wgq7h")
+theme_override_font_sizes/font_size = 16
+text = "Player"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeHeader" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/LeaderboardGrid" unique_id=1904739403]
+layout_mode = 2
+theme = ExtResource("2_wgq7h")
+theme_override_font_sizes/font_size = 16
+text = "Time"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DeathsHeader" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/LeaderboardGrid" unique_id=1090783500]
+layout_mode = 2
+theme = ExtResource("2_wgq7h")
+theme_override_font_sizes/font_size = 16
+text = "Deaths"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayedAtHeader" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/LeaderboardGrid" unique_id=2094861408]
+layout_mode = 2
+theme = ExtResource("2_wgq7h")
+theme_override_font_sizes/font_size = 16
+text = "Played at"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=155395149]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme = ExtResource("2_wgq7h")
+alignment = 1
+
+[node name="BackBtn" type="Button" parent="." unique_id=1231524934]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -74.5
+offset_top = -45.0
+offset_right = 74.5
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back"
+
+[connection signal="pressed" from="BackBtn" to="." method="_on_back_btn_pressed"]
