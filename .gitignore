@@ -44,6 +44,7 @@ $RECYCLE.BIN/
 *.swo
 *.swn
 *.log
+*.tmp
 
 # —— IDE (uncomment to ignore; many teams keep shared .vscode) ——
 # .idea/
